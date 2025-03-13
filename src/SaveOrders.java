@@ -1,6 +1,9 @@
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class SaveOrders {
     String urlToFile;
@@ -18,6 +21,8 @@ public class SaveOrders {
     private void getFileOrCreate() throws IOException {
         File f = new File(this.urlToFile);
         if(!f.exists() || f.isDirectory()) {
+            Path path = Paths.get(urlToFile);
+            Files.createDirectories(path.getParent());
             f.createNewFile();
         }
     }
