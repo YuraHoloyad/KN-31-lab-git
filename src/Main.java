@@ -5,26 +5,28 @@ public class Main {
         inputOrder();
     }
 
-
     public static void inputOrder() {
         try (Scanner scanner = new Scanner(System.in)) {
 
-            String name = printItem(scanner, "Print a name of goods");
+            String name = printData(scanner, "Print a name of goods");
             double price = printPrice(scanner, "Print a price");
-            String city = printItem(scanner, "Print a city");
-            String customer = printItem(scanner, "Print a customer");
-            String managerName = printItem(scanner, "Print a managerName");
+            String city = printData(scanner, "Print a city");
+            String customer = printData(scanner, "Print a customer");
+            String managerName = printData(scanner, "Print a managerName");
+
+            Order order = new Order(name, managerName, price, city, customer);
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
-    public static String printItem(Scanner scanner, String output) {
+    public static String printData(Scanner scanner, String output) {
         while (true) {
             try {
                 System.out.println(output);
                 if (scanner.hasNextDouble() || scanner.hasNextInt()) {
-                    throw new Exception("Size must be a string.");
+                    throw new Exception("Data must be a string.");
                 }
                 return scanner.nextLine();
             } catch (Exception e) {
@@ -40,7 +42,7 @@ public class Main {
                 System.out.println(output);
                 if (!scanner.hasNextDouble() && !scanner.hasNextInt()) {
                     scanner.nextLine();
-                    throw new Exception("Size must be an integer or double.");
+                    throw new Exception("Data must be an integer or double.");
                 }
                 double answer = scanner.nextDouble();
                 scanner.nextLine();
@@ -50,4 +52,5 @@ public class Main {
             }
         }
     }
+
 }
