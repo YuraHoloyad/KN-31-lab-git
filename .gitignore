@@ -29,6 +29,9 @@ KN-31-lab-git.iml
 ### Mac OS ###
 .DS_Store
 
+
 /out/
 /.idea/
 *.iml
+KN-31-lab-git.iml
+
